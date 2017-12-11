@@ -11,6 +11,15 @@
   <body>
     <div id="map"></div>
     
+    <form>
+      <p>
+        <input type="button" value="ROADMAP" onclick="changeMapType('roadmap')">
+        <input type="button" value="SATELLITE" onclick="changeMapType('satellite')">
+        <input type="button" value="HYBRID" onclick="changeMapType('hybrid')">
+        <input type="button" value="TERRAIN" onclick="changeMapType('terrain')">
+      </p>
+    </form>
+    
     <script type="text/javascript">
      function initMap() {
        var map=new google.maps.Map(document.getElementById('map'),{
@@ -18,6 +27,18 @@
          mapTypeId: google.maps.MapTypeId.TERRAIN,
          zoom: 16
        });
+       
+       var marker = new google.maps.Marker({
+         position: {lat:35.462906, lng:139.330869},
+         map: map
+       });
+       
+       var infoWindow =new goolge.maps.InfoWindow({
+         content: '東京工芸大学',
+         position: {lat:35.462906, lng:139.330869},
+         pixelOffset: new google.maps.Size(0,-50)
+       });
+       infoWindow.setMap(map);
      }
     </script>
     
